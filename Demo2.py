@@ -5,7 +5,6 @@ Created on Wed Mar 30 09:38:39 2022
 @author: inrae
 """
 
-from __future__ import division, print_function
 import numpy as np
 import solidspy.postprocesor as pos
 import solidspy.assemutil as assm
