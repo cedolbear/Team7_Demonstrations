@@ -37,8 +37,8 @@ loads = np.array([
     [1, 0.0, 0.0]])
 
 # generate stiffness of each node
-for cont in range(3):
-    Kloc = uel.ueltruss2D(nodes[eles[cont, 3:], 1:3], *mats[cont, :])
+for k in range(3):
+    Kloc = uel.ueltruss2D(nodes[eles[k, 3:], 1:3], *mats[k, :])
     print("\nElement {} Stiffness:\n".format(cont), np.round(Kloc))
 
 # system assembly
