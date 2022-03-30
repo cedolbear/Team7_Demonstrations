@@ -1,4 +1,4 @@
-
+e
 """
 Created on Wed Mar 30 09:38:39 2022
 
@@ -36,7 +36,7 @@ loads = np.array([
     [0, 0.0, -200.0],
     [1, 0.0, 0.0]])
 
-# generate stiffness of each node
+# generate stiffness of each element
 for k in range(3):
     Kloc = uel.ueltruss2D(nodes[eles[k, 3:], 1:3], *mats[k, :])
     print("\nElement {} Stiffness:\n".format(cont), np.round(Kloc))
@@ -54,10 +54,10 @@ disp = sol.static_sol(stiff, load_vec)     #Static solver that solves linear equ
 disp_complete = pos.complete_disp(IBC, nodes, disp)     #Formats solution in matrix form 
 print('\nDisplacement Vectors:\n{}'.format(disp_complete))
 
-stress = pos.stress_truss(nodes, eles, mats, disp_complete)   #Calculate Stress for each node
+stress = pos.stress_truss(nodes, eles, mats, disp_complete)   #Calculate stress for each element
 print('\nStresses:\n{}'.format(stress))
 
-# generate displaed nodes
+# generate displaced nodes
 nodes_disp = nodes.copy()
 nodes_disp[:,1] = nodes[:,1]+disp_complete[:,0]     #Adding calculated displacement to node 1
 nodes_disp[:,2] = nodes[:,2]+disp_complete[:,1]     #Adding calculated displacement to node 2
