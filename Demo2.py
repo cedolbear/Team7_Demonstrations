@@ -41,7 +41,7 @@ for k in range(3):
     Kloc = uel.ueltruss2D(nodes[eles[k, 3:], 1:3], *mats[k, :])
     print("\nElement {} Stiffness:\n".format(cont), np.round(Kloc))
 
-# system assembly
+# generate global stiffness of whole system
 DME , IBC , neq = assm.DME(nodes, eles) 
 # Count active equations, create boundary conditions array and the assembly operator
 # DME = Assembly operator , IBC = boundary condition array, neq = number of active equation
@@ -59,8 +59,8 @@ print('\nStresses:\n{}'.format(stress))
 
 # generate displaced nodes
 nodes_disp = nodes.copy()
-nodes_disp[:,1] = nodes[:,1]+disp_complete[:,0]     #Adding calculated displacement to node 1
-nodes_disp[:,2] = nodes[:,2]+disp_complete[:,1]     #Adding calculated displacement to node 2
+nodes_disp[:,1] = nodes[:,1]+disp_complete[:,0]     #Adding calculated displacement to node 0
+nodes_disp[:,2] = nodes[:,2]+disp_complete[:,1]     #Adding calculated displacement to node 1
 
 # plots to compare original and deformed truss
 pos.plot_truss(nodes, eles, mats, title = 'Original Truss')   
