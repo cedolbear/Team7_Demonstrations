@@ -39,7 +39,7 @@ loads = np.array([
 # generate stiffness of each element
 for k in range(3):
     Kloc = uel.ueltruss2D(nodes[eles[k, 3:], 1:3], *mats[k, :])
-    print("\nElement {} Stiffness:\n".format(cont), np.round(Kloc))
+    print("\nElement {} Stiffness:\n".format(Kloc), np.round(Kloc))
 
 # generate global stiffness of whole system
 DME , IBC , neq = assm.DME(nodes, eles) 
